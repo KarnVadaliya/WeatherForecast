@@ -18,11 +18,13 @@ class weather extends Component{
         }
         axios.get("https://api.openweathermap.org/data/2.5/forecast?q="+this.props.city+"&appid=d90a4edf4d91049321f5b1505b2d7d7e&units="+unitValue)
             .then(res=>{
+                console.log(res.data);
                 this.props.updateDays(res.data.list);
             })
 
         axios.get("https://api.openweathermap.org/data/2.5/weather?q="+this.props.city+"&appid=d90a4edf4d91049321f5b1505b2d7d7e&units="+unitValue)
             .then(res=>{
+                console.log(res.data);
                 this.props.updateCurrent({temp: res.data.main.temp, icon:res.data.weather[0].icon, wind:res.data.wind.speed, feels_like:res.data.main.feels_like})
             })
     }
